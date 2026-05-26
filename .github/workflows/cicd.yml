@@ -3,12 +3,12 @@ name: ec2에 배포하기
 # main 브랜치에 push가 발생했을 때
 on:
   push:
-    branches: [해당 브랜치 명]
+    branches: main
 
 env:
-  DOCKER_IMAGE_NAME: [도커 이름]/[이미지 명]
+  DOCKER_IMAGE_NAME: gyueon/likelion
   EC2_SSH_USER: ubuntu
-  CONTAINER_NAME: [컨테이너 명]
+  CONTAINER_NAME: likelion
 
 jobs:
   build-and-push-to-docker-hub:
@@ -19,7 +19,7 @@ jobs:
       - name: Git에 push한 내용 가져오기
         uses: actions/checkout@v4
 
-      - name: JDK 21 설치하기 (temurin_21)
+      - name: JDK 17 설치하기 (temurin_17)
         uses: actions/setup-java@v4
         with:
           java-version: '17'
